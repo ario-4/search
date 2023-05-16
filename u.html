@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Highlight search text</title>
+</head>
+<body>
+    <div id="search" name="search" >
+        <input name="query" id="query" type="text" size="30" maxlength="30" />
+        <input name="searchit" type="button" value="Search" onclick="highlightSearch()" />
+        <div id="searchtext">
+            <p>
+       The emergency meeting also saw a number of reforms proposed, including an agreed change to FIFA's code of ethics, allowing details of ongoing investigations to be released.
+
+"In future, it will be possible to confirm the opening of proceedings against leading representatives of world football on request," FIFA's ethics committee said on Tuesday.
+
+"The committee will inform about pending proceedings against individuals on the afternoon of Wednesday, October 21, once the notification of the relevant parties has been conducted."
+
+Platini was handed a provisional 90-day ban two weeks ago, along with Sepp Blatter, with both men being investigated over a £1.35million (about $2million) payment the UEFA president received in 2011 which they say related to consultancy work Platini completed nine years earlier.
+
+The head of FIFA's independent audit and compliance committee Domenico Scala said not recording the payment in the 2002 accounts was a "serious omission".
+
+He told the Financial Times: "Both parties were members of FIFA's executive committee and knowingly approved each year financial statements which were incorrect by two million Swiss francs (around $2million). That could be seen as falsification of the accounts."
+
+Platini has already submitted his candidacy ahead of Monday's deadline, but the former European footballer of the year will not be allowed to enter the presidential race while his suspension remains active.
+
+A FIFA statement read: "Domenico Scala, in his capacity as chairman of the FIFA ad-hoc electoral committee, provided information to the executive committee regarding the ongoing process for the FIFA presidential election.
+
+"He explained that candidacies for the FIFA presidency that are submitted in due time and form, but which relate to candidates who are subject to a (provisional or definite) ban from taking part in any football-related activity, will not be processed by the ad-hoc electoral committee as long as such ban is valid and in force."
+
+Platini is awaiting the verdict of the FIFA appeals committee and if the Frenchman's ban is lifted before the February election, FIFA has said it would review his candidacy.
+
+The statement continued: "The chairman also told the executive committee that, should such a ban be lifted or expire before the FIFA presidential election, scheduled for 26 February 2016, the ad-hoc electoral committee would decide, depending on the respective exact point in time, on how to proceed with the candidacy concerned."
+
+There had also been suggestions the election could be postponed but the executive committee confirmed this would not be the case.
+
+...
+
+Proposals included presidents being subject to an age limit of 74 and a maximum term of 12 years, with salaries of the president and other senior officials made public.
+
+It also recommended the executive committee become the "FIFA Council", overseeing "strategic matters" but not having executive powers over policy.
+            </p>
+        </div>
+    </div>
+    <script>
+         //search button
+          var e = document.getElementById("searchtext").innerHTML;
+          const resit = document.querySelector('p').innerHTML
+        function highlightSearch() {
+           if(document.getElementById("query").value == ""){
+                document.getElementById("searchtext").innerHTML =  resit
+            }
+            else{
+            var text = document.getElementById("query").value;
+            var query = new RegExp("(\\b" + text + "\\b)", "gim");
+            e = document.getElementById("searchtext").innerHTML;
+            var enew = e.replace(/(<span>|<\/span>)/igm, "");
+            document.getElementById("searchtext").innerHTML = enew;
+            var newe = enew.replace(query, "<span>$1</span>");
+            document.getElementById("searchtext").innerHTML = newe;
+        }}
+
+
+        //search keyup
+        document.querySelector('#query').addEventListener('keyup' , (e)=>{ 
+            if(document.getElementById("query").value == ""){
+                document.getElementById("searchtext").innerHTML= resit
+            }
+            else{
+            var text = document.getElementById("query").value;
+            var query = new RegExp("(\\b" + text + "\\b)", "gim");
+            e = document.getElementById("searchtext").innerHTML;
+            var enew = e.replace(/(<b>|<\/b>)/igm,"" );
+            document.getElementById("searchtext").innerHTML = enew;
+            var newe = enew.replace(query, "<b>$1</b>");
+            document.getElementById("searchtext").innerHTML = newe;
+        } })
+    </script>
+
+    <style>
+        #searchtext span {
+            background-color: #FF9;
+            color: #555;
+        }
+
+        div {
+            padding: 10px;
+        }
+        #searchtext b {
+            background-color: rgb(241, 217, 216);
+            color: #555;
+        }
+    </style>
+</body>
+</html>
