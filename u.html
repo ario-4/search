@@ -47,24 +47,27 @@ It also recommended the executive committee become the "FIFA Council", overseein
          //search button
          
           const resit = document.querySelector('p').innerHTML
-        function highlightSearch() {
+          function highlightSearch() {
+           
            if(document.getElementById("query").value == "" ){
-                document.getElementById("searchtext").innerHTML =  resit
+            document.getElementById("searchtext").innerHTML =  resit
             }
            
             else{
+            
             let text = document.getElementById("query").value;
             let query = new RegExp("(\\b" + text + "\\b)", "gim");
-            let e = document.getElementById("searchtext").innerHTML;
+            let e = resit;
             let enew = e.replace(/(<span>|<\/span>)/igm, "");
             document.getElementById("searchtext").innerHTML = enew;
             let newe = enew.replace(query, "<span>$1</span>");
             document.getElementById("searchtext").innerHTML = newe;
+
         }}
 
 
         //search keyup
-        /* document.querySelector('#query').addEventListener('keyup' , (e)=>{ 
+        document.querySelector('#query').addEventListener('keyup' , (e)=>{ 
             if(document.getElementById("query").value == ""){
                 document.getElementById("searchtext").innerHTML= resit
             }
@@ -76,7 +79,7 @@ It also recommended the executive committee become the "FIFA Council", overseein
             document.getElementById("searchtext").innerHTML = enew;
             let newe = enew.replace(query, "<b>$1</b>");
             document.getElementById("searchtext").innerHTML = newe;
-        } }) */
+        } })
     </script>
 
     <style>
@@ -89,7 +92,7 @@ It also recommended the executive committee become the "FIFA Council", overseein
             padding: 10px;
         }
         #searchtext b {
-            background-color: rgb(241, 217, 216);
+            background-color: rgb(247, 93, 88);
             color: #555;
         }
     </style>
