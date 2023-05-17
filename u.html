@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<html >
+<head >
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Highlight search text</title>
 </head>
@@ -45,37 +45,38 @@ It also recommended the executive committee become the "FIFA Council", overseein
     </div>
     <script>
          //search button
-          var e = document.getElementById("searchtext").innerHTML;
+         
           const resit = document.querySelector('p').innerHTML
         function highlightSearch() {
-           if(document.getElementById("query").value == ""){
+           if(document.getElementById("query").value == "" ){
                 document.getElementById("searchtext").innerHTML =  resit
             }
+           
             else{
-            var text = document.getElementById("query").value;
-            var query = new RegExp("(\\b" + text + "\\b)", "gim");
-            e = document.getElementById("searchtext").innerHTML;
-            var enew = e.replace(/(<span>|<\/span>)/igm, "");
+            let text = document.getElementById("query").value;
+            let query = new RegExp("(\\b" + text + "\\b)", "gim");
+            let e = document.getElementById("searchtext").innerHTML;
+            let enew = e.replace(/(<span>|<\/span>)/igm, "");
             document.getElementById("searchtext").innerHTML = enew;
-            var newe = enew.replace(query, "<span>$1</span>");
+            let newe = enew.replace(query, "<span>$1</span>");
             document.getElementById("searchtext").innerHTML = newe;
         }}
 
 
         //search keyup
-        document.querySelector('#query').addEventListener('keyup' , (e)=>{ 
+        /* document.querySelector('#query').addEventListener('keyup' , (e)=>{ 
             if(document.getElementById("query").value == ""){
                 document.getElementById("searchtext").innerHTML= resit
             }
             else{
-            var text = document.getElementById("query").value;
-            var query = new RegExp("(\\b" + text + "\\b)", "gim");
-            e = document.getElementById("searchtext").innerHTML;
-            var enew = e.replace(/(<b>|<\/b>)/igm,"" );
+            let text = document.getElementById("query").value;
+            let query = new RegExp("(\\n*" + text + "\\n*)", "gim");
+            let e = document.getElementById("searchtext").innerHTML;
+            let enew = e.replace(/(<b>|<\/b>)/igm,"" );
             document.getElementById("searchtext").innerHTML = enew;
-            var newe = enew.replace(query, "<b>$1</b>");
+            let newe = enew.replace(query, "<b>$1</b>");
             document.getElementById("searchtext").innerHTML = newe;
-        } })
+        } }) */
     </script>
 
     <style>
